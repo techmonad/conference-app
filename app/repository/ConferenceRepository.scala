@@ -5,7 +5,7 @@ import javax.inject.{Inject, Singleton}
 
 import models.Conference
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -14,7 +14,7 @@ class ConferenceRepository @Inject()(protected val dbConfigProvider: DatabaseCon
   extends ConferenceTable
     with HasDatabaseConfigProvider[JdbcProfile] {
 
-  import driver.api._
+  import profile.api._
 
   def create(conference: Conference): Future[Int] = db.run {
     conferenceTableQueryInc += conference
@@ -47,7 +47,7 @@ class ConferenceRepository @Inject()(protected val dbConfigProvider: DatabaseCon
 private[repository] trait ConferenceTable {
   self: HasDatabaseConfigProvider[JdbcProfile] =>
 
-  import driver.api._
+  import profile.api._
 
   lazy protected val conferenceTableQuery = TableQuery[ConferenceTable]
 
