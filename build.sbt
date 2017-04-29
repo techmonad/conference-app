@@ -1,4 +1,4 @@
-name := """play-slick-app"""
+name := """conference-app"""
 
 version := "1.0"
 
