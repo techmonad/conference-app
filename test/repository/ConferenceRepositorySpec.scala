@@ -28,13 +28,13 @@ class ConferenceRepositorySpec extends PlaySpecification {
     }
 
     "create conference" in new WithApplication() {
-      val conferenceId = await(conferenceRepo.create(Conference("Spark Summit", "FEBRUARY 7th, 2017", "FEBRUARY 9th, 2017", "Boston")))
+      val conferenceId = await(conferenceRepo.create(Conference("Spark Summit", "scaladays@gmail.com", "Scala Days Conference", "FEBRUARY 7th, 2017", "FEBRUARY 9th, 2017", "Boston")))
       conferenceId === 3
     }
 
 
     "update a conference" in new WithApplication() {
-      val result = await(conferenceRepo.update(Conference("Scala Days", "April 18th, 2017", "April 21st, 2017", "Chicago", Some(1))))
+      val result = await(conferenceRepo.update(Conference("Scala Days", "scaladays@gmail.com", "Scala Days Conference", "April 18th, 2017", "April 21st, 2017", "Chicago", Some(1))))
       result === 1
     }
 

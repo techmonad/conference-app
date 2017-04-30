@@ -29,9 +29,10 @@ class DBInit @Inject()(conferenceRepo: ConferenceRepository)(implicit ec: Execut
 }
 
 object SampleData {
-  val conferences = List(
-    Conference("Scala Days", "April 18th, 2017", "April 21st 2017", "Chicago"),
-    Conference("Spark Summit", "FEBRUARY 7th, 2017", "FEBRUARY 9th, 2017", "Boston")
 
+  val conferences = List(
+    Conference("Scala Days", "scaladays@gmail.com", "Scala Days Conference", "April 18th, 2017", "April 21st 2017", "Chicago"),
+    Conference("Spark Summit", "sparksummit@spark.com", "Spark Summit Conference", "FEBRUARY 7th, 2017", "FEBRUARY 9th, 2017", "Boston")
   )
+
 }

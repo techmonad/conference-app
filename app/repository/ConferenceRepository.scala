@@ -37,6 +37,10 @@ class ConferenceRepository @Inject()(protected val dbConfigProvider: DatabaseCon
     conferenceTableQuery.filter(_.id === id).result.headOption
   }
 
+  def getByName(name: String): Future[Option[Conference]] = db.run {
+    conferenceTableQuery.filter(_.name === name).result.headOption
+  }
+
   def delete(id: Int): Future[Int] = db.run {
     conferenceTableQuery.filter(_.id === id).delete
   }
@@ -59,13 +63,17 @@ private[repository] trait ConferenceTable {
 
     def name: Rep[String] = column[String]("name")
 
+    def email: Rep[String] = column[String]("email")
+
+    def description: Rep[String] = column[String]("description")
+
     def from: Rep[String] = column[String]("from")
 
     def to: Rep[String] = column[String]("to")
 
     def place: Rep[String] = column[String]("place")
 
-    def * = (name, from, to, place, id.?) <> (Conference.tupled, Conference.unapply)
+    def * = (name, email, description, from, to, place, id.?) <> (Conference.tupled, Conference.unapply)
   }
 
 }
