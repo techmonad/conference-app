@@ -9,12 +9,12 @@ part by TéchMónad.
 
 Community Initiative by TéchMónad
 
-* The live application is currently hosted at : [conference-app](http://conferences.herokuapp.com/)
+* The live application is currently hosted at : [conference-app](http://conferences-app.herokuapp.com/)
 * The GitHub code for the project is at : [conference-app](https://github.com/techmonad/conference-app)
 * Clone the project into local system
 * To run the Play framework 2.5.x, you need JDK 8
 * Install Typesafe Activator if you do not have it already. You can get it from here: [download](http://www.playframework.com/download)
 * Execute `activator clean compile` to build the product
 * Execute `activator run` to execute the product
-* [conference-app](http://conferences.herokuapp.com/) should now be accessible at [localhost:9000](http://localhost:9000/)
+* [conference-app](http://conferences-app.herokuapp.com/) should now be accessible at [localhost:9000](http://localhost:9000/)
 
