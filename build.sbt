@@ -10,7 +10,7 @@ libraryDependencies ++= Seq(ws, cache, specs2 % Test)
 
 libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick" % "2.1.0",
-  "org.postgresql" % "postgresql" % "9.4-1206-jdbc4",
+  "org.postgresql" % "postgresql" % "9.4.1212",
   "com.typesafe.play" %% "play-slick-evolutions" % "2.1.0",
   "com.h2database" % "h2" % "1.4.194",
   "org.webjars" %% "webjars-play" % "2.5.0",
