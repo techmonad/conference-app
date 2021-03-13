@@ -15,6 +15,6 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.4")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-mocha" % "1.1.2")
 
-addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.6")
+addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.5.1")
 
 addSbtPlugin("com.jamesward" %% "play-auto-refresh" % "0.0.15")
