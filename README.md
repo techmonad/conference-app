@@ -1,5 +1,5 @@
 
-# conference-app
+# conference-app [![Codeship Status for techmonad/conference-app](https://app.codeship.com/projects/856d79ae-fe17-482d-9068-9325e23d19b6/status?branch=master)](https://app.codeship.com/projects/434417)
 
 #### Organise Your Conferences of Scala, Java 8, Akka, Play, Spark & Others
 
