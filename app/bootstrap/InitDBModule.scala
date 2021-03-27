@@ -1,12 +1,15 @@
 package bootstrap
 
-import com.google.inject.AbstractModule
+import play.api.{Configuration, Environment}
+import play.api.inject.{Binding, Module}
 
 
-class InitDBModule extends AbstractModule {
+class InitDBModule extends Module {
 
-  override def configure() = {
-    bind(classOf[DBInit]).asEagerSingleton()
+  def bindings(environment: Environment, configuration: Configuration): Seq[Binding[_]] = {
+    Seq(
+      bind[DBInit].toSelf
+    )
   }
 
 }

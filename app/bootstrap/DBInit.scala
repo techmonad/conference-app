@@ -1,29 +1,28 @@
 package bootstrap
 
-import javax.inject.Inject
-
 import models.Conference
-import play.Logger
+import play.api.Logging
 import repository.ConferenceRepository
 
+import javax.inject.Inject
 import scala.concurrent.duration.Duration
-import scala.concurrent.{Await, ExecutionContext}
+import scala.concurrent.{Await, ExecutionContext, Future}
 import scala.util.control.NonFatal
 
 
-class DBInit @Inject()(conferenceRepo: ConferenceRepository)(implicit ec: ExecutionContext) {
+class DBInit @Inject()(conferenceRepo: ConferenceRepository)(implicit ec: ExecutionContext) extends Logging {
 
-  def insert = for {
-    conferences <- conferenceRepo.getAll() if (conferences.length == 0)
+  def insert: Future[Unit] = for {
+    conferences <- conferenceRepo.getAll() if conferences.isEmpty
     _ <- conferenceRepo.createAll(SampleData.conferences)
   } yield {}
 
   try {
-    Logger.info("Initializing database................")
+    logger.info("Initializing database................")
     Await.result(insert, Duration.Inf)
   } catch {
     case NonFatal(th) =>
-      Logger.error("Error in Initializing database ", th)
+      logger.error("Error in Initializing database ", th)
   }
 
 }

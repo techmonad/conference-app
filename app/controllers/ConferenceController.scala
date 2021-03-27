@@ -1,7 +1,6 @@
 package controllers
 
 import javax.inject._
-
 import models.Conference
 import play.api.data.Form
 import play.api.data.Forms._
@@ -14,12 +13,13 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class ConferenceController @Inject()
 (
-  conferenceRepository: ConferenceRepository
-)(implicit exec: ExecutionContext) extends Controller {
+  conferenceRepository: ConferenceRepository,
+  cc: ControllerComponents
+)(implicit exec: ExecutionContext, assetsFinder: AssetsFinder) extends AbstractController(cc) {
 
   def index = Action.async { implicit request =>
     //TODO convert into json
-    conferenceRepository.getAll.map { conferences =>
+    conferenceRepository.getAll().map { conferences =>
       Ok(views.html.index("Conferences : Home", conferences))
     }
   }
@@ -37,7 +37,7 @@ class ConferenceController @Inject()
   )
 
   def conferenceSubmit = Action.async { implicit request =>
-    conferenceForm.bindFromRequest.fold(
+    conferenceForm.bindFromRequest().fold(
       formWithErrors => {
         // binding failure, you retrieve the form containing errors:
         Future.successful(Redirect(routes.ConferenceController.index()))
